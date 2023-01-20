@@ -1,0 +1,41 @@
+******* Dependancy ***********
+
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.6.1</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.6.1</version>
+		</dependency>
+
+
+////////////////////////////////////////////////////////////////////////////////
+
+******************** Swagger Class Config ***************
+
+
+@Configuration
+@EnableSwagger2
+public class SwaggerConfig {
+
+	@Bean
+	public Docket productApi() {
+		return new Docket(DocumentationType.SWAGGER_2).apiInfo(getInfo()).select()
+				.apis(RequestHandlerSelectors.basePackage("com.BikkadIT.RestApiCrudoperation"))
+				.paths(PathSelectors.any()).build();
+
+	}
+
+	private ApiInfo getInfo() {
+
+		return new ApiInfo("Mohit Swagger", "This project is devloped by Shruteekatech Company", "version 1.0", "pune", "ShriteekaTech", "mohitsindhpure1998@gmail.com", "NextPage Name");
+		
+	};
+
+}
